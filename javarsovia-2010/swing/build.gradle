@@ -1,0 +1,14 @@
+apply plugin: 'groovy'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  groovy "org.codehaus.groovy:groovy-all:1.7.3"
+}
+
+task run (dependsOn: build) << {
+  ant.java(classname: 'org.gradle.sample.ui.swing.SwingApp', fork: true,
+       classpath: "${sourceSets.main.runtimeClasspath.asPath}")
+}

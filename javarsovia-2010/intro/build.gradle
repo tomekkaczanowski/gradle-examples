@@ -1,0 +1,14 @@
+defaultTasks 'second'
+
+task first (description: "first task") << {
+	println "my name is first"
+}
+
+task second (dependsOn: first, description:  "second task") << {
+	println "my name is second"
+}
+
+task third (dependsOn: second, description: "third task") << {
+	println "my name is third"
+}
+

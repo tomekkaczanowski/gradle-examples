@@ -1,0 +1,5 @@
+ant.importBuild "build.xml"
+
+task myTask(dependsOn: hello) << {
+  println "depends on hello ant task"
+}

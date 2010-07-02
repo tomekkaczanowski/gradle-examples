@@ -1,0 +1,27 @@
+apply plugin: 'java'
+
+import org.gradle.sample.report.ReportTask
+
+version="1.0-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+  myDependencies
+}
+
+dependencies {
+  compile 'org.hibernate:hibernate:3.1.3', 'commons-lang:commons-lang:2.5'
+  testCompile 'junit:junit:4.8.1'
+  myDependencies 'org.jmock:jmock:2.5.1'
+  myDependencies 'org.easytesting:fest-assert:1.2'
+}
+
+task generateReport(type: ReportTask, description: "generates report on dependencies and environment") {
+        // inputs.files configurations.runtime, configurations.myDependencies
+        // outputs.files 'build/report.txt'
+        jars = configurations.runtime + configurations.myDependencies
+}
+

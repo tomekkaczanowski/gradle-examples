@@ -1,0 +1,12 @@
+apply plugin: 'war'
+apply plugin: 'jetty'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+  compile 'org.apache.wicket:wicket:1.4.8'
+  runtime 'org.slf4j:slf4j-simple:1.5.8'
+}
+

@@ -1,0 +1,52 @@
+defaultTasks "second"
+
+task first (description: "first task") << {
+	println "my name is first"
+}
+
+task second (dependsOn: first, description:  "second task") << {
+	println "my name is second"
+}
+
+task third (dependsOn: second, description: "third task") << {
+	println "my name is third"
+}
+
+gradle.taskGraph.whenReady {taskGraph ->
+    if (taskGraph.hasTask(':release')) {
+        version = '1.0'
+    } else {
+        version = '1.0-SNAPSHOT'
+    }
+    tasks.each {
+      println it
+      it.doLast {
+         println "whatever $it.name"
+      }
+      it.actions.each { act ->
+       println act
+      }
+    }
+    println tasks
+}
+
+gradle.taskGraph.beforeTask { Task task ->
+    println "executing $task ..."
+}
+
+gradle.taskGraph.afterTask { Task task, TaskState state ->
+    if (state.failure) {
+        println "FAILED"
+    }
+    else {
+        println "done"
+    }
+}
+
+(1..4).each { taskNb ->
+	task "myTask${taskNb}" (description: "my task nb ${taskNb}") << {
+		println "my task: ${taskNb}"
+	}
+        third.dependsOn "myTask${taskNb}"
+}
+
