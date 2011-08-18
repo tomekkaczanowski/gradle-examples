@@ -1,0 +1,28 @@
+repositories {
+    mavenCentral()
+    flatDir name: 'localRepository', dirs: 'lib'
+}
+
+allprojects {
+	apply plugin: 'idea'
+}
+
+project(':junit-selenium-tests') {
+    apply plugin: 'java'
+
+
+dependencies {
+    testCompile 'junit:junit:4.8.2'
+
+}
+}
+
+project(':testng-selenium-tests') {
+    apply plugin: 'java'
+
+
+dependencies {
+    testCompile 'org.testng:testng:6.1.1'
+
+}
+}

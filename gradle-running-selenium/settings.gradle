@@ -1,0 +1,1 @@
+include 'junit-selenium-tests', 'html-selenium-tests', 'testng-selenium-tests'
