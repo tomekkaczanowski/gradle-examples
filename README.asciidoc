@@ -1,0 +1,1 @@
+This project groups some examples of http://gradle[gradle] usage.
