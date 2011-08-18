@@ -1,1 +1,3 @@
-This project groups some examples of http://gradle[gradle] usage.
+This project groups some examples of http://gradle.org[gradle] usage.
+
+See http://kaczanowscy.pl/tomek[my blog] for more information on gradle, coding and testing.
